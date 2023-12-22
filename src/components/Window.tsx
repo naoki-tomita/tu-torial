@@ -1,4 +1,4 @@
-import React,{ useEffect, useLayoutEffect } from "react";
+import React,{ useEffect, useLayoutEffect } from "preact/compat";
 
 function createPath(selector: string) {
   const el = document.querySelector(selector) as HTMLElement;

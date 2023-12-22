@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "preact/compat";
 import { scrollIntoViewAsync } from "../lib";
 import { Window } from "./Window";
 

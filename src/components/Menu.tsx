@@ -1,4 +1,4 @@
-import React from "react";
+import React from "preact/compat";
 
 export const Menu = ({ onToggle, title }: { onToggle: () => void, title: string }) => {
   return (

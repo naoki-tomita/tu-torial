@@ -1,5 +1,5 @@
-import React from "react";
-import { createRoot, Root } from "react-dom/client";
+import React from "preact/compat";
+import { createRoot, Root } from "preact/compat/client";
 import { Menu } from "./components/Menu";
 import { Window } from "./components/Window";
 import { Popup, ScrollInto } from "./components/Popup";
