@@ -2,6 +2,34 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { scrollIntoViewAsync } from "../lib";
 import { Window } from "./Window";
 
+export const ScrollInto = ({
+  selector,
+  shouldScroll,
+  children,
+}: {
+  selector: string,
+  shouldScroll: boolean,
+  children: React.ReactNode | React.ReactNode[],
+}) => {
+  const [isScrolling, setIsScrolling] = useState(true);
+  useLayoutEffect(() => {
+    if (!shouldScroll) return;
+    setIsScrolling(true);
+    // this is a hack to make sure the enabling scroll before scrolling
+    setTimeout(async () => {
+      const el = document.querySelector(selector) as HTMLDivElement;
+      await scrollIntoViewAsync(el, { behavior: "smooth", block: "center", inline: "center" })
+      setIsScrolling(false);
+    });
+  }, [selector]);
+
+  return (
+    <>
+    {!isScrolling && children}
+    </>
+  );
+}
+
 export const ScrollIntoPopup = ({
   isOpen,
   selector,
@@ -21,7 +49,9 @@ export const ScrollIntoPopup = ({
     await scrollIntoViewAsync(el, { behavior: "smooth", block: "center", inline: "center" })
     setIsScrolling(false);
   })()}, [selector, text, isOpen]);
+
   if (isScrolling || !isOpen) return null;
+
   return (
     <>
     <Window selector={selector} />
@@ -35,7 +65,7 @@ export const ScrollIntoPopup = ({
   );
 }
 
-const Popup = ({
+export const Popup = ({
   isOpen,
   selector,
   text,

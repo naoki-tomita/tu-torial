@@ -1,4 +1,4 @@
-import React,{ useEffect } from "react";
+import React,{ useEffect, useLayoutEffect } from "react";
 
 function createPath(selector: string) {
   const el = document.querySelector(selector) as HTMLElement;
@@ -18,7 +18,7 @@ function enableScroll() {
 
 export const Window = ({ selector }: { selector: string }) => {
   disableScroll();
-  useEffect(() => {
+  useLayoutEffect(() => {
     return enableScroll;
   }, [selector]);
 

@@ -1,7 +1,8 @@
 import React from "react";
 import { createRoot, Root } from "react-dom/client";
 import { Menu } from "./components/Menu";
-import { ScrollIntoPopup } from "./components/Popup";
+import { Window } from "./components/Window";
+import { Popup, ScrollInto } from "./components/Popup";
 
 const App = ({ scenarios, title }: { scenarios: Scenario[], title: string }) => {
   const [index, setIndex] = React.useState(0);
@@ -16,12 +17,19 @@ const App = ({ scenarios, title }: { scenarios: Scenario[], title: string }) => 
       }
     `}
     </style>
-    <ScrollIntoPopup
-      isOpen={isOpen}
-      selector={currentScenario.selector}
-      onNext={() => setIndex((index + 1) % scenarios.length)}
-      text={currentScenario.text}
-    />
+    {isOpen &&
+      <ScrollInto
+        selector={currentScenario.selector}
+        shouldScroll={isOpen}
+      >
+        <Window selector={currentScenario.selector} />
+        <Popup
+          isOpen={isOpen}
+          selector={currentScenario.selector}
+          text={currentScenario.text}
+          onNext={() => setIndex((index + 1) % scenarios.length)}
+        />
+      </ScrollInto>}
     <Menu title={title} onToggle={() => setIsOpen(!isOpen)} />
     </>
   );
