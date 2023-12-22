@@ -30,41 +30,6 @@ export const ScrollInto = ({
   );
 }
 
-export const ScrollIntoPopup = ({
-  isOpen,
-  selector,
-  text,
-  onNext,
-}: {
-  isOpen: boolean,
-  selector: string,
-  text: string,
-  onNext: () => void,
-}) => {
-  const [isScrolling, setIsScrolling] = useState(true);
-  useEffect(() => {(async () => {
-    if (!isOpen) return;
-    setIsScrolling(true);
-    const el = document.querySelector(selector) as HTMLDivElement;
-    await scrollIntoViewAsync(el, { behavior: "smooth", block: "center", inline: "center" })
-    setIsScrolling(false);
-  })()}, [selector, text, isOpen]);
-
-  if (isScrolling || !isOpen) return null;
-
-  return (
-    <>
-    <Window selector={selector} />
-    <Popup
-      selector={selector}
-      isOpen={isOpen}
-      text={text}
-      onNext={() => (onNext(), setIsScrolling(true))}
-    />
-    </>
-  );
-}
-
 export const Popup = ({
   isOpen,
   selector,
