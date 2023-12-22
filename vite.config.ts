@@ -8,5 +8,8 @@ export default defineConfig({
       fileName: () => "index.js",
       formats: ["iife"],
     }
+  },
+  define: {
+    "process.env.NODE_ENV": `"production"`
   }
 });
