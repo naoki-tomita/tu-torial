@@ -48,7 +48,7 @@ const Popup = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   useLayoutEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen || !ref.current) return;
     const el = document.querySelector(selector) as HTMLDivElement;
     const { top, left, height } = el!.getBoundingClientRect();
     const popupTop = top + height + window.scrollY + 4;
