@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/light.css">
+  <script src="https://raw.githack.com/naoki-tomita/lorem-picsum-component/master/index.js"></script>
+</head>
+<body>
+  <h1>
+    tu-torial.js
+  </h1>
+  <h2>
+    How to use
+  </h2>
+  <pre id="code">
+    <code>
+      &lt;script src="./index.js"&gt;&lt;/script&gt;
+      &lt;script&gt;
+        const tuTorial = window.tuTorial;
+        tuTorial.setTitle("Sample tutorial");
+        tuTorial.addScenario({ selector: "h1", text: "This is title." });
+        tuTorial.addScenario({ selector: "#code", text: "This is code block." });
+        tuTorial.addScenario({ selector: "footer", text: "This is footer." });
+        tuTorial.addScenario({ selector: "#radio-c", text: "This is radio." });
+        tuTorial.mount();
+      &lt;/script&gt;
+    </code>
+  </pre>
+  <article>
+    <h3>
+      This is article.
+    </h3>
+    <form>
+      <input type="radio" name="radio" id="radio-a">
+      <label for="radio-a">radio-a</label>
+      <input type="radio" name="radio" id="radio-b">
+      <label for="radio-b">radio-b</label>
+      <span id="radio-c-wrapper">
+        <input type="radio" name="radio" id="radio-c">
+        <label for="radio-c">radio-c</label>
+      </span>
+    </form>
+  </article>
+  <article>
+    <h3>
+      This is large article.
+    </h3>
+    <lorem-picsum width="800" height="500"></lorem-picsum>
+    <lorem-picsum width="320" height="480"></lorem-picsum>
+    <lorem-picsum width="800" height="2000"></lorem-picsum>
+    <lorem-picsum width="280" height="400"></lorem-picsum>
+    <lorem-picsum width="320" height="200"></lorem-picsum>
+  </article>
+  <footer>
+    <h3>
+      This is footer.
+    </h3>
+  </footer>
+
+  <script src="./dist/index.js"></script>
+  <script>
+    const tuTorial = window.tuTorial;
+    tuTorial.setTitle("Sample tutorial");
+    tuTorial.addScenario({ selector: "h1", text: "This is title." });
+    tuTorial.addScenario({ selector: "#code", text: "This is code block." });
+    tuTorial.addScenario({ selector: "footer", text: "This is footer." });
+    tuTorial.addScenario({ selector: "#radio-c-wrapper", text: "This is radio. Click this!" });
+    tuTorial.addScenario({ selector: "lorem-picsum:nth-child(3)", text: "This is custom element." })
+    tuTorial.mount();
+  </script>
+</body>
+</html>
