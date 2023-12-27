@@ -2,4 +2,4 @@
 
 This is onboarding tours library like intro.js.
 
-[see]()
+[demo](https://naoki-tomita.github.io/tu-torial/sample.html)
